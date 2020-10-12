@@ -4,16 +4,16 @@ import Head from '../components/head'
 import { IconCode } from '../lib/icons'
 
 const IndexPage = () => (
-  <div className="w-full max-w-6xl px-4 mx-auto my-8 lg:my-24">
+  <div className="w-full max-w-4xl px-4 mx-auto my-8 lg:my-24">
     <Head title="generaptors" />
     <div className="w-full flex flex-col items-center">
       <h1 className="text-3xl md:text-4xl lg:text-6xl text-center p-3 bg-white leading-none font-mono">
         🦖 Generaptors
       </h1>
-      <h3 className="text-lg md:text-2xl lg:text-3xl text-center p-3 bg-white font-mono mt-2 md:mt-4 lg:mt-12">
+      <h3 className="text-lg md:text-2xl lg:text-3xl text-center p-3 bg-white font-mono mt-2 md:mt-4 lg:mt-6">
         CSS generators & media converters
       </h3>
-      <div className="grid grid-cols-1 md:grid-cols-2 md:grid-rows-2 lg:grid-cols-3 lg:grid-rows-1 gap-6 mt-8 md:mt-10 lg:mt-32">
+      <div className="grid grid-cols-1 md:grid-cols-2 md:grid-rows-1 gap-6 mt-8 md:mt-10 lg:mt-20">
         <Link
           className="border border-gray-400 p-6 rounded bg-white flex flex-col items-center w-1/3"
           href="/css-triangles"
@@ -25,7 +25,6 @@ const IndexPage = () => (
             />
           </a>
         </Link>
-        <ThumbItem title="Work in progress..." />
         <ThumbItem title="Work in progress..." />
       </div>
     </div>
