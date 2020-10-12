@@ -1,4 +1,4 @@
-# Generaptors
+# 🦖 Generaptors
 
 ## Getting Started
 
