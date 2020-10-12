@@ -5,7 +5,7 @@ import React from 'react'
 
 const Layout = ({ children }) => {
   return (
-    <div className="layout w-full">
+    <div className="w-screen min-h-screen">
       {/* <Header></Header>
       <Main>{children}</Main>
       <Footer></Footer> */}

@@ -320,7 +320,7 @@ const BlockWrapper = ({
   setTriangleState,
   resetButton,
 }) => (
-  <div className="bg-white rounded-md border border-gray-300 p-6 lg:p-6 flex flex-col items-center">
+  <div className="bg-white rounded-md border border-gray-400 p-6 lg:p-6 flex flex-col items-center">
     {title && (
       <h3 className="font-medium w-full text-lg mb-3 leading-none flex justify-between items-center">
         <div>{title}:</div>
