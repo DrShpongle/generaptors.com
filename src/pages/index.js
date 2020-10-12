@@ -5,7 +5,7 @@ import { IconCode } from '../lib/icons'
 
 export default () => (
   <div className="w-full max-w-6xl px-4 mx-auto my-8 lg:my-24">
-    <Head title="🦖 generaptors" />
+    <Head title="generaptors" />
     <div className="w-full flex flex-col items-center">
       <h1 className="text-3xl md:text-4xl lg:text-6xl text-center p-3 bg-white leading-none font-mono">
         🦖 Generaptors

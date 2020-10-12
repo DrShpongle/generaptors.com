@@ -37,7 +37,7 @@ const Head = (props) => (
       sizes="180x180"
       href="/static/apple-touch-icon.png"
     />
-    <link rel="mask-icon" href="/static/favicon-mask.svg" color="#000000" />
+    {/* <link rel="mask-icon" href="/static/favicon-mask.svg" color="#000000" /> */}
     <meta property="og:url" content={props.url || defaultOGURL} />
     <meta property="og:title" content={props.title || ''} />
     <meta
