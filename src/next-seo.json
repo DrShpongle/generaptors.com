@@ -1,7 +1,7 @@
 {
   "title": "generaptor",
   "titleTemplate": "%s | generaptor",
-  "description": "generaptor",
+  "description": "CSS generators & media converters",
   "additionalMetaTags": [
     {
       "property": "author",
