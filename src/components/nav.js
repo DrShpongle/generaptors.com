@@ -15,7 +15,7 @@ const Nav = () => (
     <ul className="flex justify-between items-center px-4 py-4">
       <li>
         <Link href="/">
-          <a className="text-2xl text-black">🦖 Generaptors</a>
+          <a className="text-2xl text-black bg-white">🦖 Generaptors</a>
         </Link>
       </li>
       {/* <ul>
