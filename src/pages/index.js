@@ -3,9 +3,6 @@ import Head from '../components/head'
 
 import { IconCode } from '../lib/icons'
 
-const isProduction = process.env.NODE_ENV === 'production'
-console.log('isProduction', isProduction)
-
 const IndexPage = () => (
   <div className="w-full max-w-6xl px-4 mx-auto my-8 lg:my-24">
     <Head title="generaptors" />
