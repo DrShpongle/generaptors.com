@@ -3,7 +3,10 @@ import Head from '../components/head'
 
 import { IconCode } from '../lib/icons'
 
-export default () => (
+const isProduction = process.env.NODE_ENV === 'production'
+console.log('isProduction', isProduction)
+
+const IndexPage = () => (
   <div className="w-full max-w-6xl px-4 mx-auto my-8 lg:my-24">
     <Head title="generaptors" />
     <div className="w-full flex flex-col items-center">
@@ -32,8 +35,10 @@ export default () => (
   </div>
 )
 
+export default IndexPage
+
 const ThumbItem = ({ title, image }) => (
-  <div className="p-4 bg-white rounded border border-gray-400 hover:border-gray-500 transition-colors delay-100 flex flex-col rounded max-w-xs md:max-w-none">
+  <div className="p-4 bg-white rounded border border-gray-400 hover:border-gray-500 transition delay-100 flex flex-col rounded max-w-xs md:max-w-none">
     <h3 className="text-center text-xl font-mono font-medium">{title}</h3>
     <div className="mt-5 flex-grow grid place-items-center items-center rounded border border-gray-400 overflow-hidden">
       {image ? (
