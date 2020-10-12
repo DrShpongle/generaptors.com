@@ -1,0 +1,29 @@
+module.exports = {
+  purge: [
+    './src/**/*.js',
+    './pages/**/*.js',
+    './pages/**/*.js',
+    './src/**/*.js',
+  ],
+  theme: {
+    screens: {
+      sm: '640px',
+      md: '768px',
+      lg: '1024px',
+      xl: '1280px',
+      '2xl': '1440px',
+      '3xl': '1920px',
+    },
+    extend: {
+      rotate: {
+        '135': '135deg',
+        '225': '225deg',
+        '270': '270deg',
+      },
+    },
+  },
+  variants: {
+    margin: ['responsive', 'first', 'last'],
+    padding: ['responsive', 'first', 'last'],
+  },
+}

@@ -1,0 +1,15 @@
+{
+  "title": "generaptor",
+  "titleTemplate": "%s | generaptor",
+  "description": "generaptor",
+  "additionalMetaTags": [
+    {
+      "property": "author",
+      "content": "generaptor"
+    },
+    {
+      "property": "keywords",
+      "content": ""
+    }
+  ]
+}

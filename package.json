@@ -1,0 +1,36 @@
+{
+  "name": "create-next-app-cli",
+  "version": "0.1.0",
+  "engines": {
+    "node": "12.x"
+  },
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "next",
+    "build": "next build",
+    "start": "next start"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@emotion/core": "^10.0.35",
+    "@mdx-js/react": "^1.6.18",
+    "emotion": "^10.0.27",
+    "lodash": "^4.17.20",
+    "next": "^9.5.3",
+    "next-compose-plugins": "^2.2.0",
+    "next-mdx-enhanced": "^4.0.0",
+    "next-seo": "^4.10.0",
+    "react": "^16.13.1",
+    "react-colorful": "^4.1.2",
+    "react-dom": "^16.13.1",
+    "react-use": "^15.3.4",
+    "xstate": "^4.13.0"
+  },
+  "devDependencies": {
+    "postcss-preset-env": "^6.7.0",
+    "tailwindcss": "^1.8.10"
+  }
+}
