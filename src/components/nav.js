@@ -11,14 +11,14 @@ const links = [
 })
 
 const Nav = () => (
-  <nav>
-    <ul>
+  <nav className="w-full">
+    <ul className="flex justify-between items-center px-4 py-4">
       <li>
         <Link href="/">
-          <a>Home</a>
+          <a className="text-2xl text-black">🦖 Generaptors</a>
         </Link>
       </li>
-      <ul>
+      {/* <ul>
         {links.map(({ key, href, label }) => (
           <li key={key}>
             <Link href={href}>
@@ -26,35 +26,8 @@ const Nav = () => (
             </Link>
           </li>
         ))}
-      </ul>
+      </ul> */}
     </ul>
-
-    <style jsx>{`
-      :global(body) {
-        margin: 0;
-        font-family: -apple-system, BlinkMacSystemFont, Avenir Next, Avenir,
-          Helvetica, sans-serif;
-      }
-      nav {
-        text-align: center;
-      }
-      ul {
-        display: flex;
-        justify-content: space-between;
-      }
-      nav > ul {
-        padding: 4px 16px;
-      }
-      li {
-        display: flex;
-        padding: 6px 8px;
-      }
-      a {
-        color: #067df7;
-        text-decoration: none;
-        font-size: 13px;
-      }
-    `}</style>
   </nav>
 )
 

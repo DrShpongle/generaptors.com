@@ -6,6 +6,7 @@ import { HexColorPicker, HexColorInput } from 'react-colorful'
 import { useCopyToClipboard, useClickAway, useLocalStorage } from 'react-use'
 
 import Head from '../../components/head'
+import Nav from '../../components/nav'
 import {
   IconArrowUp,
   IconLink,
@@ -88,7 +89,8 @@ const CssTrianglesWidget = () => {
     <>
       <Head title="🔺 CSS triangles" />
       <div className="w-screen min-h-screen flex flex-col items-center">
-        <div className="w-full flex flex-col items-center my-6 md:my-10 lg:my-16">
+        <Nav />
+        <div className="w-full flex flex-col items-center my-4 md:my-6 lg:my-10">
           <h2 className="flex-shrink-0 font-medium text-2xl md:text-3xl lg:text-4xl mb-6 md:mb-10 lg:mb-12 text-center flex items-baseline py-1 px-3 bg-white">
             CSS tri
             <TitleTriangle color={triangleState.color} className="mx-px" />

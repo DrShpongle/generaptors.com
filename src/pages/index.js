@@ -1,13 +1,11 @@
 import Link from 'next/link'
 import Head from '../components/head'
-import Nav from '../components/nav'
 
 import { IconCode } from '../lib/icons'
 
 export default () => (
   <div className="w-full max-w-6xl px-4 mx-auto my-8 lg:my-24">
     <Head title="🦖 generaptors" />
-    {/* <Nav /> */}
     <div className="w-full flex flex-col items-center">
       <h1 className="text-3xl md:text-4xl lg:text-6xl text-center p-3 bg-white leading-none font-mono">
         🦖 Generaptors
