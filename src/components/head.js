@@ -18,7 +18,14 @@ const Head = (props) => {
         title: props.defaultTitle || defaultTitle,
         description: props.description || defaultDescription,
         url: props.url || defaultOGURL,
-        images: [defaultOGImage],
+        images: [
+          {
+            url: props.ogImage ? props.ogImage : defaultOGImage,
+            width: 1200,
+            height: 630,
+            alt: props.title || defaultTitle,
+          },
+        ],
       }}
       canonical={props.url || defaultOGURL}
     />
