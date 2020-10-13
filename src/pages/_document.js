@@ -6,14 +6,14 @@ const dotColor = 'gray'
 const dotSize = 1
 const dotSpace = 12
 
-const isProduction = process.env.NODE_ENV === 'production'
-
 class MyDocument extends Document {
   static async getInitialProps(ctx) {
     const initialProps = await Document.getInitialProps(ctx)
-    return { ...initialProps }
+    const isProduction = process.env.NODE_ENV === 'production'
+    return { ...initialProps, isProduction }
   }
   render() {
+    const { isProduction } = this.props
     return (
       <Html>
         <Head>
