@@ -6,7 +6,6 @@ const defaultDescription = 'CSS generators & media converters'
 const defaultKeywords = 'css generator converter triangle'
 const defaultOGURL = 'https://generaptors.com/'
 const defaultOGImage = '/static/og-image.png'
-twconsole.log('defaultOGImage', defaultOGImage)
 
 const Head = (props) => (
   <NextHead>
