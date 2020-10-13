@@ -1,8 +1,5 @@
 import NextHead from 'next/head'
 import { string } from 'prop-types'
-import { GA_TRACKING_ID } from '../lib/gtag'
-
-const isProduction = process.env.NODE_ENV === 'production'
 
 const defaultTitle = 'generaptors'
 const defaultDescription = 'CSS generators & media converters'
