@@ -164,6 +164,7 @@ const CssTrianglesWidget = () => {
           <div className="mt-16">
             <a
               className="flex items-center rounded p-2 bg-gray-200 hover:bg-gray-400 transition-colors ease-in-out duration-150"
+              css={{ display: 'block !important' }}
               target="_blank"
               rel="noopener noreferrer"
               href={`https://twitter.com/intent/tweet/?text=${encodeURIComponent(
