@@ -5,8 +5,8 @@
 First, run the development server:
 
 ```bash
-git clone https://github.com/DrShpongle/css-triangles.git
-cd css-triangles
+git clone https://github.com/DrShpongle/generaptors.com.git
+cd generaptors.com
 yarn
 yarn dev
 ```
