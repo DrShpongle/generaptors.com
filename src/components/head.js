@@ -1,10 +1,10 @@
 import NextHead from 'next/head'
 import { string } from 'prop-types'
 
-const defaultDescription = ''
-const defaultKeywords = ''
-const defaultOGURL = ''
-const defaultOGImage = ''
+const defaultDescription = 'CSS generators & media converters'
+const defaultKeywords = 'css generator converter triangle'
+const defaultOGURL = 'https://generaptors.com/'
+const defaultOGImage = '/static/og-image.png'
 
 const Head = (props) => (
   <NextHead>
