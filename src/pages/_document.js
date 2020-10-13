@@ -1,5 +1,4 @@
 import Document, { Html, Head, Main, NextScript } from 'next/document'
-import { NextSeo } from 'next-seo'
 import { GA_TRACKING_ID } from '../lib/gtag'
 
 const bgColor = 'white'
