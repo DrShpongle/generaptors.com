@@ -1,11 +1,11 @@
 {
-  "title": "generaptor",
-  "titleTemplate": "%s | generaptor",
+  "title": "Home",
+  "titleTemplate": "generaptors | %s",
   "description": "CSS generators & media converters",
   "additionalMetaTags": [
     {
       "property": "author",
-      "content": "generaptor"
+      "content": "Evgeniy Nagalskiy"
     },
     {
       "property": "keywords",
