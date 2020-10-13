@@ -17,7 +17,7 @@ export default class App extends NextApp {
     const { Component, pageProps } = this.props
     return (
       <>
-        <DefaultSeo {...defaultSeoConfig} />
+        {/* <DefaultSeo {...defaultSeoConfig} /> */}
         <MDXProvider>
           <Layout>
             <Component {...pageProps} />
