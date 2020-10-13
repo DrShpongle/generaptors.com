@@ -88,8 +88,7 @@ const CssTrianglesWidget = () => {
 
   return (
     <>
-      {/* <Head title="🔺 CSS triangles" /> */}
-      <Head />
+      <Head title="🔺 CSS triangles" />
       <div className="w-screen min-h-screen flex flex-col items-center">
         <Nav />
         <div className="w-full flex flex-col items-center my-4 md:my-6 lg:my-10">
