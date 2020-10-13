@@ -10,7 +10,11 @@ import Layout from '../components/layout'
 import 'react-colorful/dist/index.css'
 import '../styles/index.css'
 
-Router.events.on('routeChangeComplete', (url) => gtag.pageview(url))
+const isBrowser = typeof window !== 'undefined'
+
+if (isBrowser) {
+  Router.events.on('routeChangeComplete', (url) => gtag.pageview(url))
+}
 
 export default class App extends NextApp {
   render() {

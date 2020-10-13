@@ -6,6 +6,7 @@ const defaultDescription = 'CSS generators & media converters'
 const defaultKeywords = 'css generator converter triangle'
 const defaultOGURL = 'https://generaptors.com/'
 const defaultOGImage = '/static/og-image.png'
+twconsole.log('defaultOGImage', defaultOGImage)
 
 const Head = (props) => (
   <NextHead>
@@ -45,12 +46,28 @@ const Head = (props) => (
       property="og:description"
       content={props.description || defaultDescription}
     />
-    <meta name="twitter:site" content={props.url || defaultOGURL} />
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:image" content={props.ogImage || defaultOGImage} />
+
+    {/* Open Graph / Facebook */}
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={props.url || defaultOGURL} />
+    <meta property="og:title" content={props.title || defaultTitle} />
+    <meta
+      property="og:description"
+      content={props.description || defaultDescription}
+    />
     <meta property="og:image" content={props.ogImage || defaultOGImage} />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
+
+    {/* Twitter */}
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:url" content={props.url || defaultOGURL} />
+    <meta name="twitter:title" content={props.title || defaultTitle} />
+    <meta
+      name="twitter:description"
+      content={props.description || defaultDescription}
+    />
+    <meta property="twitter:image" content={props.ogImage || defaultOGImage} />
   </NextHead>
 )
 
