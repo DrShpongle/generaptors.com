@@ -15,7 +15,7 @@ const Head = (props) => {
       description={props.description || defaultDescription}
       titleTemplate={`generaptors ${props.title ? '| %s' : ''}`}
       openGraph={{
-        title: props.defaultTitle || defaultTitle,
+        title: props.title || defaultTitle,
         description: props.description || defaultDescription,
         url: props.url || defaultOGURL,
         images: [
