@@ -1,5 +1,5 @@
 {
-  "title": "Home",
+  "title": "generaptors",
   "titleTemplate": "generaptors | %s",
   "description": "CSS generators & media converters",
   "additionalMetaTags": [
@@ -9,7 +9,23 @@
     },
     {
       "property": "keywords",
-      "content": ""
+      "content": "css converter triangle"
     }
-  ]
+  ],
+  "twitter": {
+    "cardType": "summary",
+    "handle": "eggheadio",
+    "site": "eggheadio"
+  },
+  "openGraph": {
+    "type": "website",
+    "site_name": "generaptors.com",
+    "images": [
+      {
+        "url": "/static/og-image.png",
+        "width": 1200,
+        "height": 630
+      }
+    ]
+  }
 }
