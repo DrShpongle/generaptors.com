@@ -22,7 +22,7 @@
     "site_name": "generaptors.com",
     "images": [
       {
-        "url": "/static/og-image.png",
+        "url": "https://generaptors.com/static/og-image.png",
         "width": 1200,
         "height": 630
       }
