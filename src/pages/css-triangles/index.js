@@ -13,6 +13,7 @@ import {
   IconColorSwatch,
   IconClipboardCopy,
   IconRefresh,
+  IconTwitter,
 } from '../../lib/icons'
 
 const isBrowser = typeof window !== 'undefined'
@@ -159,6 +160,21 @@ const CssTrianglesWidget = () => {
                 className="ml-4"
               />
             </BlockWrapper>
+          </div>
+          <div className="mt-16">
+            <a
+              className="flex items-center rounded p-2 bg-gray-200 hover:bg-gray-400 transition-colors ease-in-out duration-150"
+              target="_blank"
+              rel="noopener noreferrer"
+              href={`https://twitter.com/intent/tweet/?text=${encodeURIComponent(
+                '🦖 Generaptors: CSS triangle generator',
+              )}&url=${encodeURIComponent(
+                'https://generaptors.com/css-triangles',
+              )}`}
+            >
+              <IconTwitter className="w-5 mr-2" />
+              <span>Tweet</span>
+            </a>
           </div>
         </div>
       </div>
