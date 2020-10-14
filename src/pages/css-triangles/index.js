@@ -72,8 +72,7 @@ const CssTrianglesWidget = () => {
   }
 
   const resultConcatenation = (str) => {
-    const immutableStyles = 'width: 0; height: 0; border-style: solid;'
-    const concatenatedString = beautifyString(immutableStyles + str)
+    const concatenatedString = beautifyString(str)
     return triangleState.output === 'css'
       ? concatenatedString
       : toCSSinJS(concatenatedString)
@@ -267,7 +266,6 @@ const orthogonalDirections = [
 ]
 
 const getIt = ({ w, c }) => {
-  // const
   const dt = 'transparent'
   return `
     width: 0;
@@ -287,126 +285,119 @@ const templatesTable = {
       c: { b: color },
     }),
   topIsosceles: (sizes, color) =>
-    `border-width: 0 ${sizes.width / 2}px ${sizes.height}px ${
-      sizes.width / 2
-    }px; border-color: transparent transparent ${color} transparent;`,
+    getIt({
+      w: { r: sizes.width / 2, b: sizes.height, l: sizes.width / 2 },
+      c: { b: color },
+    }),
   topScalene: (sizes, color) =>
-    `border-width: 0 ${sizes.right}px ${sizes.height}px ${sizes.left}px; border-color: transparent transparent ${color} transparent;`,
+    getIt({
+      w: { r: sizes.right, b: sizes.height, l: sizes.left },
+      c: { b: color },
+    }),
   topRightIsosceles: (sizes, color) =>
-    `border-width: 0 ${sizes.width}px ${sizes.height}px 0; border-color: transparent ${color} transparent transparent;`,
+    getIt({
+      w: { r: sizes.width, b: sizes.height },
+      c: { r: color },
+    }),
   topRightScalene: (sizes, color) =>
-    `border-width: 0 ${sizes.width}px ${sizes.height}px 0; border-color: transparent ${color} transparent transparent;`,
+    getIt({
+      w: { r: sizes.width, b: sizes.height },
+      c: { r: color },
+    }),
   rightEquilateral: (sizes, color) =>
-    `border-width: ${sizes.height / 2}px 0 ${sizes.height / 2}px ${Math.round(
-      Math.sqrt(Math.pow(sizes.height, 2) - Math.pow(sizes.height / 2, 2)),
-    )}px; border-color: transparent transparent transparent ${color};`,
+    getIt({
+      w: {
+        t: sizes.height / 2,
+        b: sizes.height / 2,
+        l: Math.round(
+          Math.sqrt(Math.pow(sizes.height, 2) - Math.pow(sizes.height / 2, 2)),
+        ),
+      },
+      c: { l: color },
+    }),
   rightIsosceles: (sizes, color) =>
-    `border-width: ${sizes.height / 2}px 0 ${sizes.height / 2}px ${
-      sizes.width
-    }px; border-color: transparent transparent transparent ${color};`,
+    getIt({
+      w: { t: sizes.height / 2, b: sizes.height / 2, l: sizes.width },
+      c: { l: color },
+    }),
   rightScalene: (sizes, color) =>
-    `border-width: ${sizes.top}px 0 ${sizes.bottom}px ${sizes.width}px; border-color: transparent transparent transparent ${color};`,
+    getIt({
+      w: { t: sizes.top, b: sizes.bottom, l: sizes.width },
+      c: { l: color },
+    }),
   bottomRightIsosceles: (sizes, color) =>
-    `border-width: 0 0 ${sizes.height}px ${sizes.width}px; border-color: transparent transparent ${color} transparent;`,
+    getIt({
+      w: { b: sizes.height, l: sizes.width },
+      c: { b: color },
+    }),
   bottomRightScalene: (sizes, color) =>
-    `border-width: 0 0 ${sizes.height}px ${sizes.width}px; border-color: transparent transparent ${color} transparent;`,
+    getIt({
+      w: { b: sizes.height, l: sizes.width },
+      c: { b: color },
+    }),
   bottomEquilateral: (sizes, color) =>
-    `border-width: ${Math.round(
-      Math.sqrt(Math.pow(sizes.width, 2) - Math.pow(sizes.width / 2, 2)),
-    )}px ${sizes.width / 2}px 0 ${
-      sizes.width / 2
-    }px; border-color: ${color} transparent transparent transparent;`,
+    getIt({
+      w: {
+        t: Math.round(
+          Math.sqrt(Math.pow(sizes.width, 2) - Math.pow(sizes.width / 2, 2)),
+        ),
+        r: sizes.width / 2,
+        l: sizes.width / 2,
+      },
+      c: { t: color },
+    }),
   bottomIsosceles: (sizes, color) =>
-    `border-width: ${sizes.height}px ${sizes.width / 2}px 0 ${
-      sizes.width / 2
-    }px; border-color: ${color} transparent transparent transparent;`,
+    getIt({
+      w: { t: sizes.height, r: sizes.width / 2, l: sizes.width / 2 },
+      c: { t: color },
+    }),
   bottomScalene: (sizes, color) =>
-    `border-width: ${sizes.height}px ${sizes.right}px 0 ${sizes.left}px; border-color: ${color} transparent transparent transparent;`,
+    getIt({
+      w: { t: sizes.height, r: sizes.width / 2, l: sizes.width / 2 },
+      c: { t: color },
+    }),
   bottomLeftIsosceles: (sizes, color) =>
-    `border-width: ${sizes.height}px 0 0 ${sizes.width}px; border-color: transparent transparent transparent ${color};`,
+    getIt({
+      w: { t: sizes.height, l: sizes.width },
+      c: { l: color },
+    }),
   bottomLeftScalene: (sizes, color) =>
-    `border-width: ${sizes.height}px 0 0 ${sizes.width}px; border-color: transparent transparent transparent ${color};`,
+    getIt({
+      w: { t: sizes.height, l: sizes.width },
+      c: { l: color },
+    }),
   leftEquilateral: (sizes, color) =>
-    `border-width: ${sizes.height / 2}px ${Math.round(
-      Math.sqrt(Math.pow(sizes.height, 2) - Math.pow(sizes.height / 2, 2)),
-    )}px ${
-      sizes.height / 2
-    }px 0; border-color: transparent ${color} transparent transparent;`,
+    getIt({
+      w: {
+        t: sizes.height / 2,
+        r: Math.round(
+          Math.sqrt(Math.pow(sizes.height, 2) - Math.pow(sizes.height / 2, 2)),
+        ),
+        b: sizes.height / 2,
+      },
+      c: { r: color },
+    }),
   leftIsosceles: (sizes, color) =>
-    `border-width: ${sizes.height / 2}px ${sizes.width}px ${
-      sizes.height / 2
-    }px 0; border-color: transparent ${color} transparent transparent;`,
+    getIt({
+      w: { t: sizes.height / 2, r: sizes.width, b: sizes.height / 2 },
+      c: { r: color },
+    }),
   leftScalene: (sizes, color) =>
-    `border-width: ${sizes.top}px ${sizes.width}px ${sizes.bottom}px 0; border-color: transparent ${color} transparent transparent;`,
+    getIt({
+      w: { t: sizes.height / 2, r: sizes.width, b: sizes.height / 2 },
+      c: { r: color },
+    }),
   topLeftIsosceles: (sizes, color) =>
-    `border-width: ${sizes.height}px ${sizes.width}px 0 0; border-color: ${color} transparent transparent transparent;`,
+    getIt({
+      w: { t: sizes.height, r: sizes.width },
+      c: { t: color },
+    }),
   topLeftScalene: (sizes, color) =>
-    `border-width: ${sizes.height}px ${sizes.width}px 0 0; border-color: ${color} transparent transparent transparent;`,
+    getIt({
+      w: { t: sizes.height, r: sizes.width },
+      c: { t: color },
+    }),
 }
-
-// const templatesTable = {
-//   topEquilateral: (sizes, color) =>
-//     getIt({
-//       w: { r: sizes.width / 2, b: sizes.height, l: sizes.width / 2 },
-//       c: { b: color },
-//     }),
-//   topIsosceles: (sizes, color) =>
-//     `border-width: 0 ${sizes.width / 2}px ${sizes.height}px ${
-//       sizes.width / 2
-//     }px; border-color: transparent transparent ${color} transparent;`,
-//   topScalene: (sizes, color) =>
-//     `border-width: 0 ${sizes.right}px ${sizes.height}px ${sizes.left}px; border-color: transparent transparent ${color} transparent;`,
-//   topRightIsosceles: (sizes, color) =>
-//     `border-width: 0 ${sizes.width}px ${sizes.height}px 0; border-color: transparent ${color} transparent transparent;`,
-//   topRightScalene: (sizes, color) =>
-//     `border-width: 0 ${sizes.width}px ${sizes.height}px 0; border-color: transparent ${color} transparent transparent;`,
-//   rightEquilateral: (sizes, color) =>
-//     `border-width: ${sizes.height / 2}px 0 ${sizes.height / 2}px ${Math.round(
-//       Math.sqrt(Math.pow(sizes.height, 2) - Math.pow(sizes.height / 2, 2)),
-//     )}px; border-color: transparent transparent transparent ${color};`,
-//   rightIsosceles: (sizes, color) =>
-//     `border-width: ${sizes.height / 2}px 0 ${sizes.height / 2}px ${
-//       sizes.width
-//     }px; border-color: transparent transparent transparent ${color};`,
-//   rightScalene: (sizes, color) =>
-//     `border-width: ${sizes.top}px 0 ${sizes.bottom}px ${sizes.width}px; border-color: transparent transparent transparent ${color};`,
-//   bottomRightIsosceles: (sizes, color) =>
-//     `border-width: 0 0 ${sizes.height}px ${sizes.width}px; border-color: transparent transparent ${color} transparent;`,
-//   bottomRightScalene: (sizes, color) =>
-//     `border-width: 0 0 ${sizes.height}px ${sizes.width}px; border-color: transparent transparent ${color} transparent;`,
-//   bottomEquilateral: (sizes, color) =>
-//     `border-width: ${Math.round(
-//       Math.sqrt(Math.pow(sizes.width, 2) - Math.pow(sizes.width / 2, 2)),
-//     )}px ${sizes.width / 2}px 0 ${
-//       sizes.width / 2
-//     }px; border-color: ${color} transparent transparent transparent;`,
-//   bottomIsosceles: (sizes, color) =>
-//     `border-width: ${sizes.height}px ${sizes.width / 2}px 0 ${
-//       sizes.width / 2
-//     }px; border-color: ${color} transparent transparent transparent;`,
-//   bottomScalene: (sizes, color) =>
-//     `border-width: ${sizes.height}px ${sizes.right}px 0 ${sizes.left}px; border-color: ${color} transparent transparent transparent;`,
-//   bottomLeftIsosceles: (sizes, color) =>
-//     `border-width: ${sizes.height}px 0 0 ${sizes.width}px; border-color: transparent transparent transparent ${color};`,
-//   bottomLeftScalene: (sizes, color) =>
-//     `border-width: ${sizes.height}px 0 0 ${sizes.width}px; border-color: transparent transparent transparent ${color};`,
-//   leftEquilateral: (sizes, color) =>
-//     `border-width: ${sizes.height / 2}px ${Math.round(
-//       Math.sqrt(Math.pow(sizes.height, 2) - Math.pow(sizes.height / 2, 2)),
-//     )}px ${
-//       sizes.height / 2
-//     }px 0; border-color: transparent ${color} transparent transparent;`,
-//   leftIsosceles: (sizes, color) =>
-//     `border-width: ${sizes.height / 2}px ${sizes.width}px ${
-//       sizes.height / 2
-//     }px 0; border-color: transparent ${color} transparent transparent;`,
-//   leftScalene: (sizes, color) =>
-//     `border-width: ${sizes.top}px ${sizes.width}px ${sizes.bottom}px 0; border-color: transparent ${color} transparent transparent;`,
-//   topLeftIsosceles: (sizes, color) =>
-//     `border-width: ${sizes.height}px ${sizes.width}px 0 0; border-color: ${color} transparent transparent transparent;`,
-//   topLeftScalene: (sizes, color) =>
-//     `border-width: ${sizes.height}px ${sizes.width}px 0 0; border-color: ${color} transparent transparent transparent;`,
-// }
 
 const BlockWrapper = ({
   children,
