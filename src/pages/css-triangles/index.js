@@ -281,12 +281,20 @@ const getIt = ({ w, c }) => {
 const templatesTable = {
   topEquilateral: (sizes, color) =>
     getIt({
-      w: { r: sizes.width / 2, b: sizes.height, l: sizes.width / 2 },
+      w: {
+        r: Math.round(sizes.width / 2),
+        b: sizes.height,
+        l: Math.round(sizes.width / 2),
+      },
       c: { b: color },
     }),
   topIsosceles: (sizes, color) =>
     getIt({
-      w: { r: sizes.width / 2, b: sizes.height, l: sizes.width / 2 },
+      w: {
+        r: Math.round(sizes.width / 2),
+        b: sizes.height,
+        l: Math.round(sizes.width / 2),
+      },
       c: { b: color },
     }),
   topScalene: (sizes, color) =>
@@ -307,8 +315,8 @@ const templatesTable = {
   rightEquilateral: (sizes, color) =>
     getIt({
       w: {
-        t: sizes.height / 2,
-        b: sizes.height / 2,
+        t: Math.round(sizes.height / 2),
+        b: Math.round(sizes.height / 2),
         l: Math.round(
           Math.sqrt(Math.pow(sizes.height, 2) - Math.pow(sizes.height / 2, 2)),
         ),
@@ -317,7 +325,11 @@ const templatesTable = {
     }),
   rightIsosceles: (sizes, color) =>
     getIt({
-      w: { t: sizes.height / 2, b: sizes.height / 2, l: sizes.width },
+      w: {
+        t: Math.round(sizes.height / 2),
+        b: Math.round(sizes.height / 2),
+        l: sizes.width,
+      },
       c: { l: color },
     }),
   rightScalene: (sizes, color) =>
@@ -341,19 +353,27 @@ const templatesTable = {
         t: Math.round(
           Math.sqrt(Math.pow(sizes.width, 2) - Math.pow(sizes.width / 2, 2)),
         ),
-        r: sizes.width / 2,
-        l: sizes.width / 2,
+        r: Math.round(sizes.width / 2),
+        l: Math.round(sizes.width / 2),
       },
       c: { t: color },
     }),
   bottomIsosceles: (sizes, color) =>
     getIt({
-      w: { t: sizes.height, r: sizes.width / 2, l: sizes.width / 2 },
+      w: {
+        t: sizes.height,
+        r: Math.round(sizes.width / 2),
+        l: Math.round(sizes.width / 2),
+      },
       c: { t: color },
     }),
   bottomScalene: (sizes, color) =>
     getIt({
-      w: { t: sizes.height, r: sizes.width / 2, l: sizes.width / 2 },
+      w: {
+        t: sizes.height,
+        r: Math.round(sizes.width / 2),
+        l: Math.round(sizes.width / 2),
+      },
       c: { t: color },
     }),
   bottomLeftIsosceles: (sizes, color) =>
