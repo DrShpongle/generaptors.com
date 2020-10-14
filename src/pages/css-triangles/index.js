@@ -92,13 +92,13 @@ const CssTrianglesWidget = () => {
       <div className="w-screen min-h-screen flex flex-col items-center">
         <Nav />
         <div className="w-full flex flex-col items-center my-4 md:my-6 lg:my-10">
-          <h2 className="flex-shrink-0 font-medium text-2xl md:text-3xl lg:text-4xl mb-6 md:mb-10 lg:mb-12 text-center flex items-baseline py-1 px-3 bg-white">
+          <h1 className="flex-shrink-0 font-medium text-2xl md:text-3xl lg:text-4xl mb-6 md:mb-10 lg:mb-12 text-center flex items-baseline py-1 px-3 bg-white">
             CSS tri
             <TitleTriangle color={triangleState.color} className="mx-px" />
             ngle gener
             <TitleTriangle color={triangleState.color} className="mx-px" />
             tor
-          </h2>
+          </h1>
           <div className="w-full max-w-sm md:max-w-5xl px-4 md:px-6 grid md:grid-rows-2 grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
             <BlockWrapper title="Set the direction" centered>
               <TriangleDirectionControl
