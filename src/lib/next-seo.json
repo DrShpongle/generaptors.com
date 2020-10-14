@@ -1,8 +1,12 @@
 {
   "additionalMetaTags": [
     {
+      "property": "charset",
+      "content": "UTF-8"
+    },
+    {
       "property": "lang",
-      "content": "en"
+      "content": "en-us"
     },
     {
       "property": "author",
@@ -15,10 +19,6 @@
     {
       "property": "viewport",
       "content": "width=device-width, initial-scale=1, user-scalable=no, shrink-to-fit=no"
-    },
-    {
-      "property": "charset",
-      "content": "UTF-8"
     }
   ]
 }

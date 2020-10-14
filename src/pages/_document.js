@@ -17,6 +17,7 @@ class MyDocument extends Document {
     return (
       <Html>
         <Head>
+          <meta httpEquiv="content-language" content="en-us" />
           <link
             rel="icon"
             type="image/png"
@@ -35,11 +36,6 @@ class MyDocument extends Document {
             sizes="180x180"
             href="/static/apple-touch-icon.png"
           />
-          {/* <link
-            rel="mask-icon"
-            href="/static/favicon-mask.svg"
-            color="#000000"
-          /> */}
           {isProduction && (
             <>
               <script
