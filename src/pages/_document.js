@@ -15,7 +15,7 @@ class MyDocument extends Document {
   render() {
     const { isProduction } = this.props
     return (
-      <Html>
+      <Html lang="en">
         <Head>
           <meta httpEquiv="content-language" content="en-us" />
           <link
