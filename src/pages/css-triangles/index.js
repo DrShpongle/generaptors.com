@@ -57,33 +57,22 @@ const CssTrianglesWidget = () => {
   const composedState = triangleState.direction + startCase(triangleState.type)
 
   const beautifyString = (str) => {
-    return str.replace(/;/gm, ';\n').replace(/"0"/gm, '0').replace(/^\s+/gm, '')
+    return str.replace(/^\s+/gm, '')
   }
 
-  const toCSSinJS = (str) => {
-    return str
-      .replace(
-        /(\b\w+)\-(\S{1})(\S+\:)/gm,
-        ($0, $1, $2, $3) => $1 + $2.replace($2, $2.toUpperCase()) + $3,
-      )
-      .replace(/:\s/g, ': "')
-      .replace(/;/gm, '",')
-      .replace(/"0"/gm, '0')
-  }
-
-  const resultConcatenation = (str) => {
-    const concatenatedString = beautifyString(str)
-    return triangleState.output === 'css'
-      ? concatenatedString
-      : toCSSinJS(concatenatedString)
-  }
-
-  const resultCode = templatesTable[composedState](
+  const demoTriangleStyles = templatesTable[composedState](
     triangleState.values,
     triangleState.color,
+    'css',
   )
 
-  const resultCodeFormatted = resultConcatenation(resultCode)
+  const resultCode = beautifyString(
+    templatesTable[composedState](
+      triangleState.values,
+      triangleState.color,
+      triangleState.output,
+    ),
+  )
 
   return (
     <>
@@ -112,7 +101,7 @@ const CssTrianglesWidget = () => {
               setTriangleState={setTriangleState}
               resetButton
             >
-              <TriangleDemo computedStyles={resultCode} />
+              <TriangleDemo computedStyles={demoTriangleStyles} />
             </BlockWrapper>
             <BlockWrapper>
               <div className="w-full">
@@ -150,14 +139,11 @@ const CssTrianglesWidget = () => {
 
             <BlockWrapper title="Grab the result">
               <ResultCodeOutput
-                resultCode={resultCodeFormatted}
+                resultCode={resultCode}
                 output={triangleState.output}
                 setTriangleState={setTriangleState}
               />
-              <CopyToClipboard
-                stringToCopy={resultCodeFormatted}
-                className="ml-4"
-              />
+              <CopyToClipboard stringToCopy={resultCode} className="ml-4" />
             </BlockWrapper>
           </div>
           <div className="mt-16">
@@ -265,7 +251,7 @@ const orthogonalDirections = [
   },
 ]
 
-const getIt = ({ w, c }) => {
+const outputCss = ({ w, c }) => {
   const dt = 'transparent'
   return `
     width: 0;
@@ -278,145 +264,237 @@ const getIt = ({ w, c }) => {
   `
 }
 
+const outputCssInJs = ({ w, c }) => {
+  const dt = 'transparent'
+  return `
+    width: 0,
+    height: 0,
+    borderStyle: "solid",
+    borderWidth: "${w.t ? `${w.t}px` : 0} ${w.r ? `${w.r}px` : 0} ${
+    w.b ? `${w.b}px` : 0
+  } ${w.l ? `${w.l}px` : 0}",
+    borderColor: "${c.t || dt} ${c.r || dt} ${c.b || dt} ${c.l || dt}",
+  `
+}
+
+const getIt = (values, output) => {
+  let outputFunc = () => {}
+  switch (output) {
+    case 'css':
+      outputFunc = outputCss
+      break
+    case 'css-in-js':
+      outputFunc = outputCssInJs
+      break
+    default:
+      outputFunc = outputCss
+  }
+  return outputFunc(values)
+}
+
 const templatesTable = {
-  topEquilateral: (sizes, color) =>
-    getIt({
-      w: {
-        r: Math.round(sizes.width / 2),
-        b: sizes.height,
-        l: Math.round(sizes.width / 2),
+  topEquilateral: (sizes, color, output) =>
+    getIt(
+      {
+        w: {
+          r: Math.round(sizes.width / 2),
+          b: sizes.height,
+          l: Math.round(sizes.width / 2),
+        },
+        c: { b: color },
       },
-      c: { b: color },
-    }),
-  topIsosceles: (sizes, color) =>
-    getIt({
-      w: {
-        r: Math.round(sizes.width / 2),
-        b: sizes.height,
-        l: Math.round(sizes.width / 2),
+      output,
+    ),
+  topIsosceles: (sizes, color, output) =>
+    getIt(
+      {
+        w: {
+          r: Math.round(sizes.width / 2),
+          b: sizes.height,
+          l: Math.round(sizes.width / 2),
+        },
+        c: { b: color },
       },
-      c: { b: color },
-    }),
-  topScalene: (sizes, color) =>
-    getIt({
-      w: { r: sizes.right, b: sizes.height, l: sizes.left },
-      c: { b: color },
-    }),
-  topRightIsosceles: (sizes, color) =>
-    getIt({
-      w: { r: sizes.width, b: sizes.height },
-      c: { r: color },
-    }),
-  topRightScalene: (sizes, color) =>
-    getIt({
-      w: { r: sizes.width, b: sizes.height },
-      c: { r: color },
-    }),
-  rightEquilateral: (sizes, color) =>
-    getIt({
-      w: {
-        t: Math.round(sizes.height / 2),
-        b: Math.round(sizes.height / 2),
-        l: Math.round(
-          Math.sqrt(Math.pow(sizes.height, 2) - Math.pow(sizes.height / 2, 2)),
-        ),
+      output,
+    ),
+  topScalene: (sizes, color, output) =>
+    getIt(
+      {
+        w: { r: sizes.right, b: sizes.height, l: sizes.left },
+        c: { b: color },
       },
-      c: { l: color },
-    }),
-  rightIsosceles: (sizes, color) =>
-    getIt({
-      w: {
-        t: Math.round(sizes.height / 2),
-        b: Math.round(sizes.height / 2),
-        l: sizes.width,
+      output,
+    ),
+  topRightIsosceles: (sizes, color, output) =>
+    getIt(
+      {
+        w: { r: sizes.width, b: sizes.height },
+        c: { r: color },
       },
-      c: { l: color },
-    }),
-  rightScalene: (sizes, color) =>
-    getIt({
-      w: { t: sizes.top, b: sizes.bottom, l: sizes.width },
-      c: { l: color },
-    }),
-  bottomRightIsosceles: (sizes, color) =>
-    getIt({
-      w: { b: sizes.height, l: sizes.width },
-      c: { b: color },
-    }),
-  bottomRightScalene: (sizes, color) =>
-    getIt({
-      w: { b: sizes.height, l: sizes.width },
-      c: { b: color },
-    }),
-  bottomEquilateral: (sizes, color) =>
-    getIt({
-      w: {
-        t: Math.round(
-          Math.sqrt(Math.pow(sizes.width, 2) - Math.pow(sizes.width / 2, 2)),
-        ),
-        r: Math.round(sizes.width / 2),
-        l: Math.round(sizes.width / 2),
+      output,
+    ),
+  topRightScalene: (sizes, color, output) =>
+    getIt(
+      {
+        w: { r: sizes.width, b: sizes.height },
+        c: { r: color },
       },
-      c: { t: color },
-    }),
-  bottomIsosceles: (sizes, color) =>
-    getIt({
-      w: {
-        t: sizes.height,
-        r: Math.round(sizes.width / 2),
-        l: Math.round(sizes.width / 2),
+      output,
+    ),
+  rightEquilateral: (sizes, color, output) =>
+    getIt(
+      {
+        w: {
+          t: Math.round(sizes.height / 2),
+          b: Math.round(sizes.height / 2),
+          l: Math.round(
+            Math.sqrt(
+              Math.pow(sizes.height, 2) - Math.pow(sizes.height / 2, 2),
+            ),
+          ),
+        },
+        c: { l: color },
       },
-      c: { t: color },
-    }),
-  bottomScalene: (sizes, color) =>
-    getIt({
-      w: {
-        t: sizes.height,
-        r: Math.round(sizes.width / 2),
-        l: Math.round(sizes.width / 2),
+      output,
+    ),
+  rightIsosceles: (sizes, color, output) =>
+    getIt(
+      {
+        w: {
+          t: Math.round(sizes.height / 2),
+          b: Math.round(sizes.height / 2),
+          l: sizes.width,
+        },
+        c: { l: color },
       },
-      c: { t: color },
-    }),
-  bottomLeftIsosceles: (sizes, color) =>
-    getIt({
-      w: { t: sizes.height, l: sizes.width },
-      c: { l: color },
-    }),
-  bottomLeftScalene: (sizes, color) =>
-    getIt({
-      w: { t: sizes.height, l: sizes.width },
-      c: { l: color },
-    }),
-  leftEquilateral: (sizes, color) =>
-    getIt({
-      w: {
-        t: sizes.height / 2,
-        r: Math.round(
-          Math.sqrt(Math.pow(sizes.height, 2) - Math.pow(sizes.height / 2, 2)),
-        ),
-        b: sizes.height / 2,
+      output,
+    ),
+  rightScalene: (sizes, color, output) =>
+    getIt(
+      {
+        w: { t: sizes.top, b: sizes.bottom, l: sizes.width },
+        c: { l: color },
       },
-      c: { r: color },
-    }),
-  leftIsosceles: (sizes, color) =>
-    getIt({
-      w: { t: sizes.height / 2, r: sizes.width, b: sizes.height / 2 },
-      c: { r: color },
-    }),
-  leftScalene: (sizes, color) =>
-    getIt({
-      w: { t: sizes.height / 2, r: sizes.width, b: sizes.height / 2 },
-      c: { r: color },
-    }),
-  topLeftIsosceles: (sizes, color) =>
-    getIt({
-      w: { t: sizes.height, r: sizes.width },
-      c: { t: color },
-    }),
-  topLeftScalene: (sizes, color) =>
-    getIt({
-      w: { t: sizes.height, r: sizes.width },
-      c: { t: color },
-    }),
+      output,
+    ),
+  bottomRightIsosceles: (sizes, color, output) =>
+    getIt(
+      {
+        w: { b: sizes.height, l: sizes.width },
+        c: { b: color },
+      },
+      output,
+    ),
+  bottomRightScalene: (sizes, color, output) =>
+    getIt(
+      {
+        w: { b: sizes.height, l: sizes.width },
+        c: { b: color },
+      },
+      output,
+    ),
+  bottomEquilateral: (sizes, color, output) =>
+    getIt(
+      {
+        w: {
+          t: Math.round(
+            Math.sqrt(Math.pow(sizes.width, 2) - Math.pow(sizes.width / 2, 2)),
+          ),
+          r: Math.round(sizes.width / 2),
+          l: Math.round(sizes.width / 2),
+        },
+        c: { t: color },
+      },
+      output,
+    ),
+  bottomIsosceles: (sizes, color, output) =>
+    getIt(
+      {
+        w: {
+          t: sizes.height,
+          r: Math.round(sizes.width / 2),
+          l: Math.round(sizes.width / 2),
+        },
+        c: { t: color },
+      },
+      output,
+    ),
+  bottomScalene: (sizes, color, output) =>
+    getIt(
+      {
+        w: {
+          t: sizes.height,
+          r: Math.round(sizes.width / 2),
+          l: Math.round(sizes.width / 2),
+        },
+        c: { t: color },
+      },
+      output,
+    ),
+  bottomLeftIsosceles: (sizes, color, output) =>
+    getIt(
+      {
+        w: { t: sizes.height, l: sizes.width },
+        c: { l: color },
+      },
+      output,
+    ),
+  bottomLeftScalene: (sizes, color, output) =>
+    getIt(
+      {
+        w: { t: sizes.height, l: sizes.width },
+        c: { l: color },
+      },
+      output,
+    ),
+  leftEquilateral: (sizes, color, output) =>
+    getIt(
+      {
+        w: {
+          t: sizes.height / 2,
+          r: Math.round(
+            Math.sqrt(
+              Math.pow(sizes.height, 2) - Math.pow(sizes.height / 2, 2),
+            ),
+          ),
+          b: sizes.height / 2,
+        },
+        c: { r: color },
+      },
+      output,
+    ),
+  leftIsosceles: (sizes, color, output) =>
+    getIt(
+      {
+        w: { t: sizes.height / 2, r: sizes.width, b: sizes.height / 2 },
+        c: { r: color },
+      },
+      output,
+    ),
+  leftScalene: (sizes, color, output) =>
+    getIt(
+      {
+        w: { t: sizes.height / 2, r: sizes.width, b: sizes.height / 2 },
+        c: { r: color },
+      },
+      output,
+    ),
+  topLeftIsosceles: (sizes, color, output) =>
+    getIt(
+      {
+        w: { t: sizes.height, r: sizes.width },
+        c: { t: color },
+      },
+      output,
+    ),
+  topLeftScalene: (sizes, color, output) =>
+    getIt(
+      {
+        w: { t: sizes.height, r: sizes.width },
+        c: { t: color },
+      },
+      output,
+    ),
 }
 
 const BlockWrapper = ({
