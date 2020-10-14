@@ -251,29 +251,34 @@ const orthogonalDirections = [
   },
 ]
 
+const getWidth = (w) => (w ? `${w}px` : '0')
+const getColor = (c) => c || 'transparent'
+
 const outputCss = ({ w, c }) => {
-  const dt = 'transparent'
   return `
     width: 0;
     height: 0;
     border-style: solid;
-    border-width: ${w.t ? `${w.t}px` : 0} ${w.r ? `${w.r}px` : 0} ${
-    w.b ? `${w.b}px` : 0
-  } ${w.l ? `${w.l}px` : 0};
-    border-color: ${c.t || dt} ${c.r || dt} ${c.b || dt} ${c.l || dt};
+    border-width: ${getWidth(w.t)} ${getWidth(w.r)} ${getWidth(w.b)} ${getWidth(
+    w.l,
+  )};
+    border-color: ${getColor(c.t)} ${getColor(c.r)} ${getColor(c.b)} ${getColor(
+    c.l,
+  )};
   `
 }
 
 const outputCssInJs = ({ w, c }) => {
-  const dt = 'transparent'
   return `
     width: 0,
     height: 0,
     borderStyle: "solid",
-    borderWidth: "${w.t ? `${w.t}px` : 0} ${w.r ? `${w.r}px` : 0} ${
-    w.b ? `${w.b}px` : 0
-  } ${w.l ? `${w.l}px` : 0}",
-    borderColor: "${c.t || dt} ${c.r || dt} ${c.b || dt} ${c.l || dt}",
+    borderWidth: "${getWidth(w.t)} ${getWidth(w.r)} ${getWidth(w.b)} ${getWidth(
+    w.l,
+  )}",
+    borderColor: "${getColor(c.t)} ${getColor(c.r)} ${getColor(c.b)} ${getColor(
+    c.l,
+  )}",
   `
 }
 
