@@ -251,7 +251,7 @@ const orthogonalDirections = [
   },
 ]
 
-const getWidth = (w) => (w ? `${w}px` : '0')
+const getWidth = (w) => (w ? `${Math.round(w)}px` : '0')
 const getColor = (c) => c || 'transparent'
 
 const outputCss = ({ w, c }) => {
@@ -302,9 +302,9 @@ const templatesTable = {
     getIt(
       {
         w: {
-          r: Math.round(sizes.width / 2),
+          r: sizes.width / 2,
           b: sizes.height,
-          l: Math.round(sizes.width / 2),
+          l: sizes.width / 2,
         },
         c: { b: color },
       },
@@ -314,9 +314,9 @@ const templatesTable = {
     getIt(
       {
         w: {
-          r: Math.round(sizes.width / 2),
+          r: sizes.width / 2,
           b: sizes.height,
-          l: Math.round(sizes.width / 2),
+          l: sizes.width / 2,
         },
         c: { b: color },
       },
@@ -350,12 +350,10 @@ const templatesTable = {
     getIt(
       {
         w: {
-          t: Math.round(sizes.height / 2),
-          b: Math.round(sizes.height / 2),
-          l: Math.round(
-            Math.sqrt(
-              Math.pow(sizes.height, 2) - Math.pow(sizes.height / 2, 2),
-            ),
+          t: sizes.height / 2,
+          b: sizes.height / 2,
+          l: Math.sqrt(
+            Math.pow(sizes.height, 2) - Math.pow(sizes.height / 2, 2),
           ),
         },
         c: { l: color },
@@ -366,8 +364,8 @@ const templatesTable = {
     getIt(
       {
         w: {
-          t: Math.round(sizes.height / 2),
-          b: Math.round(sizes.height / 2),
+          t: sizes.height / 2,
+          b: sizes.height / 2,
           l: sizes.width,
         },
         c: { l: color },
@@ -402,11 +400,9 @@ const templatesTable = {
     getIt(
       {
         w: {
-          t: Math.round(
-            Math.sqrt(Math.pow(sizes.width, 2) - Math.pow(sizes.width / 2, 2)),
-          ),
-          r: Math.round(sizes.width / 2),
-          l: Math.round(sizes.width / 2),
+          t: Math.sqrt(Math.pow(sizes.width, 2) - Math.pow(sizes.width / 2, 2)),
+          r: sizes.width / 2,
+          l: sizes.width / 2,
         },
         c: { t: color },
       },
@@ -417,8 +413,8 @@ const templatesTable = {
       {
         w: {
           t: sizes.height,
-          r: Math.round(sizes.width / 2),
-          l: Math.round(sizes.width / 2),
+          r: sizes.width / 2,
+          l: sizes.width / 2,
         },
         c: { t: color },
       },
@@ -429,8 +425,8 @@ const templatesTable = {
       {
         w: {
           t: sizes.height,
-          r: Math.round(sizes.width / 2),
-          l: Math.round(sizes.width / 2),
+          r: sizes.width / 2,
+          l: sizes.width / 2,
         },
         c: { t: color },
       },
@@ -457,10 +453,8 @@ const templatesTable = {
       {
         w: {
           t: sizes.height / 2,
-          r: Math.round(
-            Math.sqrt(
-              Math.pow(sizes.height, 2) - Math.pow(sizes.height / 2, 2),
-            ),
+          r: Math.sqrt(
+            Math.pow(sizes.height, 2) - Math.pow(sizes.height / 2, 2),
           ),
           b: sizes.height / 2,
         },
