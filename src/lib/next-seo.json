@@ -16,5 +16,10 @@
       "property": "viewport",
       "content": "width=device-width, initial-scale=1, user-scalable=no, shrink-to-fit=no"
     }
-  ]
+  ],
+  "twitter": {
+    "handle": "ltcolumbo34",
+    "site": "ltcolumbo34",
+    "cardType": "summary_large_image"
+  }
 }

@@ -27,11 +27,6 @@ const Head = (props) => {
           },
         ],
       }}
-      twitter={{
-        handle: 'ltcolumbo34',
-        site: 'ltcolumbo34',
-        cardType: 'summary_large_image',
-      }}
       canonical={props.url || defaultOGURL}
     />
   )

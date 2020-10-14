@@ -2,6 +2,32 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+  --bg-color: white;
+  --dot-color: gray;
+  --dot-size: 1px;
+  --dot-space: 12px;
+}
+/* const dotColor = 'gray'
+const dotSize = 1
+const dotSpace = 12 */
+
 #__next #tweet-it-button {
   display: flex !important;
+}
+
+body {
+  background: linear-gradient(
+        90deg,
+        var(--bg-color) calc(var(--dot-space) - var(--dot-size)),
+        transparent 1%
+      )
+      center,
+    linear-gradient(
+        var(--bg-color) calc(var(--dot-space) - var(--dot-size)),
+        transparent 1%
+      )
+      center,
+    var(--dot-color);
+  background-size: var(--dot-space) var(--dot-space);
 }
