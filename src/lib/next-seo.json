@@ -1,6 +1,10 @@
 {
   "additionalMetaTags": [
     {
+      "property": "lang",
+      "content": "en"
+    },
+    {
       "property": "author",
       "content": "@ltcolumbo34"
     },
