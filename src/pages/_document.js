@@ -17,11 +17,6 @@ class MyDocument extends Document {
     return (
       <Html>
         <Head>
-          <meta charSet="UTF-8" />
-          <meta
-            name="keywords"
-            content="css triangle generator converter optimizer"
-          />
           <link
             rel="icon"
             type="image/png"
@@ -47,7 +42,6 @@ class MyDocument extends Document {
           /> */}
           {isProduction && (
             <>
-              {/* Global Site Tag (gtag.js) - Google Analytics */}
               <script
                 async
                 src={`https://www.googletagmanager.com/gtag/js?id=${GA_TRACKING_ID}`}
