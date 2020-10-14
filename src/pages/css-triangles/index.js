@@ -560,7 +560,7 @@ const TriangleDirectionItem = ({
               height: triangleState.values.width,
             },
           }),
-        ...(triangleState.triangleType === 'isosceles' &&
+        ...(triangleState.type === 'isosceles' &&
           isDiagonalDirectionButton && {
             values: {
               ...triangleState.values,
@@ -646,10 +646,12 @@ const TriangleTypeControl = ({
           onChange={(e) => {
             setTriangleState({
               type: e.target.value,
-              values: {
-                ...triangleState.values,
-                height: triangleState.values.width,
-              },
+              ...(!isOrthogonalDirection && {
+                values: {
+                  ...triangleState.values,
+                  height: triangleState.values.width,
+                },
+              }),
             })
           }}
           checked={triangleState.type === 'isosceles'}
