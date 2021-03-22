@@ -1,6 +1,6 @@
 ## 🦖 Generaptors - set of css tools
 
-Live: [https://www.generaptors.com/](www.generaptors.com/)
+Live: [www.generaptors.com](https://www.generaptors.com/)
 
 ### Develop:
 
