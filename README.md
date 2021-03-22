@@ -1,6 +1,8 @@
-# 🦖 Generaptors
+## 🦖 Generaptors - set of css tools
 
-## Getting Started
+Live: [https://www.generaptors.com/](www.generaptors.com/)
+
+### Develop:
 
 First, run the development server:
 
